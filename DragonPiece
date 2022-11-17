@@ -1,0 +1,90 @@
+    local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/HackerXD297/GUI/main/GorfaiGui", true))()
+    library:CreateWatermark("Gorfai Na Hee No.1") -- Config แตกนะเดียวค่อยแก้รอเน็ตมาก่อน By MeowX#0001
+    local CenterHubNo1 = library:CreateWindow("Gorfai Na Hee Hub",Enum.KeyCode.RightControl)
+    local Tab = CenterHubNo1:CreateTab("Main")
+    local Spam = Tab:CreateSector("Spam Skill","Left")
+    Spam:AddLabel("Re Execute To Reload Weapon")
+    local Weaponlist = {}
+    local Weapon = nil
+
+        for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+            if v:IsA"Tool" then
+            table.insert(Weaponlist,v.Name)
+            end
+        end
+
+        local We = Spam:AddDropdown("Select weapon",Weaponlist,"Select weapon",false,function(currentOption)
+            Weapon = currentOption
+        end)
+
+        Spam:AddToggle("Auto Spam Z",false,function(a)
+        AutoZ = a
+        end)
+
+            spawn(function()
+            while wait() do
+            if AutoZ then
+            pcall(function()
+            game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
+            wait(0.2)
+            local args = {
+                [1] = game:GetService("Players").LocalPlayer
+                }
+
+            game:GetService("Players").LocalPlayer.Character:FindFirstChild(Weapon).Skill1.Fire:FireServer(unpack(args))
+            end)
+        end
+    end
+end)
+
+    Spam:AddToggle("Auto Spam X",false,function(a)
+        AutoX = a
+        end)
+
+            spawn(function()
+            while wait() do
+            if AutoX then
+            pcall(function()
+            game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
+            wait(0.2)
+            local args = {
+                [1] = game:GetService("Players").LocalPlayer
+                }
+
+            game:GetService("Players").LocalPlayer.Character:FindFirstChild(Weapon).Skill2.Fire:FireServer(unpack(args))
+            end)
+        end
+    end
+end)
+
+        Spam:AddToggle("Auto Spam C",false,function(a)
+        AutoC = a
+        end)
+
+            spawn(function()
+            while wait() do
+            if AutoC then
+            pcall(function()
+            game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
+            wait(0.2)
+            local args = {
+                [1] = game:GetService("Players").LocalPlayer
+                }
+
+            game:GetService("Players").LocalPlayer.Character:FindFirstChild(Weapon).Skill3.Fire:FireServer(unpack(args))
+            end)
+        end
+    end
+end)
+    local Sector3 = Tab:CreateSector("Local Player","Right")
+    Sector3:AddSlider("Player Speed",16,16,500,1,function(s)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+    end)
+       Sector3:AddSlider("Player JumpPower",50,50,500,1,function(j)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = j
+       end)
+
+    Sector3:AddSeperator("Seperator By Gorfai")
+    local Tab2 = CenterHubNo1:CreateTab("Config")
+    -- Config แตกนะเดียวค่อยแก้รอเน็ตมาก่อน By MeowX#0001
+    Tab2:CreateConfigSystem() -- Config แตกนะเดียวค่อยแก้รอเน็ตมาก่อน By MeowX#0001 -- ห้ามนำไปแจกต่อนะจ๊ะ XD
